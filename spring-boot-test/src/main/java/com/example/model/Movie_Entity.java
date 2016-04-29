@@ -1,157 +1,77 @@
 package com.example.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
 
-//Huge database 
+//Huge database not needed only those things are needed where login is req to inject
 @Entity
-
 public class Movie_Entity {
-	private long movieId;
-	private String title;
-	private int year;
-	enum rated {one_star , two_star ,three_star,four_star,five_star};	
-	private String released;
-	private String runtime;
-	private String genre;
-	private String director;
-	private String writers;
-	
-	
-	@ManyToMany
-	private List actors;
-	public long getMovieId() {
-		return movieId;
+	@OneToMany
+	private long Imdb_id;
+	private long Comment_id;
+	@OneToMany
+	private User user;
+	private Date TimeStamp;
+	@Column
+	@Size(min=10, max=700)
+	private String commentBody;
+	private int likes, dislikes,hits;
+	public long getImdb_id() {
+		return Imdb_id;
 	}
-	public void setMovieId(long movieId) {
-		this.movieId = movieId;
+	public void setImdb_id(long imdb_id) {
+		Imdb_id = imdb_id;
 	}
-	public List getActors() {
-		return actors;
+	public long getComment_id() {
+		return Comment_id;
 	}
-	public void setActors(List actors) {
-		this.actors = actors;
+	public void setComment_id(long comment_id) {
+		Comment_id = comment_id;
 	}
-	@Column(length=500)
-	private String plot;
-	private String language;
-	private String country;
-	private String awards;
-	private String poster;
-	private int metascore;//It means reviews 
-	private float imdb_rating;
-	private int imdb_votes;
-	private String imdb_id;
-	private String type;
-	
-	//IMDB rating will different entity 
-	public String getTitle() {
-		return title;
+	public User getUser() {
+		return user;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setUser(User user) {
+		this.user = user;
 	}
-	public int getYear() {
-		return year;
+	public Date getTimeStamp() {
+		return TimeStamp;
 	}
-	public void setYear(int year) {
-		this.year = year;
+	public void setTimeStamp(Date timeStamp) {
+		TimeStamp = timeStamp;
 	}
-	
-	public String getReleased() {
-		return released;
+	public String getCommentBody() {
+		return commentBody;
 	}
-	public void setReleased(String released) {
-		this.released = released;
+	public void setCommentBody(String commentBody) {
+		this.commentBody = commentBody;
 	}
-	public String getRuntime() {
-		return runtime;
+	public int getLikes() {
+		return likes;
 	}
-	public void setRuntime(String runtime) {
-		this.runtime = runtime;
+	public void setLikes(int likes) {
+		this.likes = likes;
 	}
-	public String getGenre() {
-		return genre;
+	public int getDislikes() {
+		return dislikes;
 	}
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setDislikes(int dislikes) {
+		this.dislikes = dislikes;
 	}
-	public String getDirector() {
-		return director;
+	public int getHits() {
+		return hits;
 	}
-	public void setDirector(String director) {
-		this.director = director;
-	}
-	public String getWriters() {
-		return writers;
-	}
-	public void setWriters(String writers) {
-		this.writers = writers;
+	public void setHits(int hits) {
+		this.hits = hits;
 	}
 	
-	public String getPlot() {
-		return plot;
-	}
-	public void setPlot(String plot) {
-		this.plot = plot;
-	}
-	public String getLanguage() {
-		return language;
-	}
-	public void setLanguage(String language) {
-		this.language = language;
-	}
-	public String getCountry() {
-		return country;
-	}
-	public void setCountry(String country) {
-		this.country = country;
-	}
-	public String getAwards() {
-		return awards;
-	}
-	public void setAwards(String awards) {
-		this.awards = awards;
-	}
-	public String getPoster() {
-		return poster;
-	}
-	public void setPoster(String poster) {
-		this.poster = poster;
-	}
-	public int getMetascore() {
-		return metascore;
-	}
-	public void setMetascore(int metascore) {
-		this.metascore = metascore;
-	}
-	public float getImdb_rating() {
-		return imdb_rating;
-	}
-	public void setImdb_rating(float imdb_rating) {
-		this.imdb_rating = imdb_rating;
-	}
-	public int getImdb_votes() {
-		return imdb_votes;
-	}
-	public void setImdb_votes(int imdb_votes) {
-		this.imdb_votes = imdb_votes;
-	}
-	public String getImdb_id() {
-		return imdb_id;
-	}
-	public void setImdb_id(String imdb_id) {
-		this.imdb_id = imdb_id;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
+	
+	
 	
 }
